@@ -1,5 +1,1 @@
-node_modules
-.eslintrc.js
-package-lock.json
-package.json
-src/styles/style.css.map
+node_modules/
