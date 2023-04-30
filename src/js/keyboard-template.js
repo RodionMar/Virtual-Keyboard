@@ -1,7 +1,6 @@
 export default function keyboardTemplate() {
-  const backQuote = '`';
-  const backsLash = ' \ ';
-  return `
+    const backQuote = '`';
+    return `
     <div class="keyboard">
       <div class="keyboard__first-row">
         <div id="Backquote" class="keyboard__key keyboard__key--back-quote">
@@ -691,5 +690,5 @@ export default function keyboardTemplate() {
         <div id="ControlRight" class="keyboard__key keyboard__key--right-ctrl">Ctrl</div>
       </div>
 </div>
-  `
+  `;
 }
