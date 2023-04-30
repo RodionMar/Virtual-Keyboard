@@ -190,6 +190,135 @@ template {
 }
 
 /*----The end----*/
-h1 {
-  font-size: 50px;
+body {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+  font-size: 20px;
+}
+.container h1 {
+  max-width: 50%;
+  font-size: 38px;
+  color: aqua;
+}
+.container .keyboard-field {
+  margin: 50px 0;
+  font-size: 24px;
+}
+.container .keyboard {
+  border: 1px solid #000;
+  background: gray;
+  padding: 5px;
+}
+.container .keyboard__first-row, .container .keyboard__second-row, .container .keyboard__third-row, .container .keyboard__fourth-row, .container .keyboard__fifth-row {
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  margin-bottom: 5px;
+}
+.container .keyboard__fifth-row {
+  margin-bottom: 0px;
+}
+.container .keyboard__key {
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  background: #444444;
+  background: #444444;
+  border-radius: 3px;
+  transition: border-radius 0.2s, background 0.2s;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.container .keyboard__key--back-quote, .container .keyboard__key--digit-one, .container .keyboard__key--digit-two, .container .keyboard__key--digit-three, .container .keyboard__key--digit-four, .container .keyboard__key--digit-five, .container .keyboard__key--digit-six, .container .keyboard__key--digit-seven, .container .keyboard__key--digit-eight, .container .keyboard__key--digit-nine, .container .keyboard__key--digit-zero, .container .keyboard__key--minus, .container .keyboard__key--equal, .container .keyboard__key--backs-lash, .container .keyboard__key--del, .container .keyboard__key--keyQ, .container .keyboard__key--keyW, .container .keyboard__key--keyE, .container .keyboard__key--keyR, .container .keyboard__key--keyT, .container .keyboard__key--keyY, .container .keyboard__key--keyU, .container .keyboard__key--keyI, .container .keyboard__key--keyO, .container .keyboard__key--keyP, .container .keyboard__key--left-square-bracket, .container .keyboard__key--right-square-bracket, .container .keyboard__key--keyA, .container .keyboard__key--keyS, .container .keyboard__key--keyD, .container .keyboard__key--keyF, .container .keyboard__key--keyG, .container .keyboard__key--keyH, .container .keyboard__key--keyJ, .container .keyboard__key--keyK, .container .keyboard__key--keyL, .container .keyboard__key--semicolon, .container .keyboard__key--quote, .container .keyboard__key--keyZ, .container .keyboard__key--keyX, .container .keyboard__key--keyC, .container .keyboard__key--keyV, .container .keyboard__key--keyB, .container .keyboard__key--keyN, .container .keyboard__key--keyM, .container .keyboard__key--comma, .container .keyboard__key--dot, .container .keyboard__key--slash, .container .keyboard__key--left-ctrl, .container .keyboard__key--right-ctrl, .container .keyboard__key--left-alt, .container .keyboard__key--right-alt, .container .keyboard__key--win, .container .keyboard__key--top-arrow, .container .keyboard__key--right-arrow, .container .keyboard__key--bottom-arrow, .container .keyboard__key--left-arrow {
+  width: 50px;
+  height: 50px;
+}
+.container .keyboard__key--back-quote:hover, .container .keyboard__key--digit-one:hover, .container .keyboard__key--digit-two:hover, .container .keyboard__key--digit-three:hover, .container .keyboard__key--digit-four:hover, .container .keyboard__key--digit-five:hover, .container .keyboard__key--digit-six:hover, .container .keyboard__key--digit-seven:hover, .container .keyboard__key--digit-eight:hover, .container .keyboard__key--digit-nine:hover, .container .keyboard__key--digit-zero:hover, .container .keyboard__key--minus:hover, .container .keyboard__key--equal:hover, .container .keyboard__key--backs-lash:hover, .container .keyboard__key--del:hover, .container .keyboard__key--keyQ:hover, .container .keyboard__key--keyW:hover, .container .keyboard__key--keyE:hover, .container .keyboard__key--keyR:hover, .container .keyboard__key--keyT:hover, .container .keyboard__key--keyY:hover, .container .keyboard__key--keyU:hover, .container .keyboard__key--keyI:hover, .container .keyboard__key--keyO:hover, .container .keyboard__key--keyP:hover, .container .keyboard__key--left-square-bracket:hover, .container .keyboard__key--right-square-bracket:hover, .container .keyboard__key--keyA:hover, .container .keyboard__key--keyS:hover, .container .keyboard__key--keyD:hover, .container .keyboard__key--keyF:hover, .container .keyboard__key--keyG:hover, .container .keyboard__key--keyH:hover, .container .keyboard__key--keyJ:hover, .container .keyboard__key--keyK:hover, .container .keyboard__key--keyL:hover, .container .keyboard__key--semicolon:hover, .container .keyboard__key--quote:hover, .container .keyboard__key--keyZ:hover, .container .keyboard__key--keyX:hover, .container .keyboard__key--keyC:hover, .container .keyboard__key--keyV:hover, .container .keyboard__key--keyB:hover, .container .keyboard__key--keyN:hover, .container .keyboard__key--keyM:hover, .container .keyboard__key--comma:hover, .container .keyboard__key--dot:hover, .container .keyboard__key--slash:hover, .container .keyboard__key--left-ctrl:hover, .container .keyboard__key--right-ctrl:hover, .container .keyboard__key--left-alt:hover, .container .keyboard__key--right-alt:hover, .container .keyboard__key--win:hover, .container .keyboard__key--top-arrow:hover, .container .keyboard__key--right-arrow:hover, .container .keyboard__key--bottom-arrow:hover, .container .keyboard__key--left-arrow:hover {
+  background: gainsboro;
+}
+.container .keyboard__key--tab {
+  width: 60px;
+  height: 50px;
+}
+.container .keyboard__key--tab:hover {
+  background: gainsboro;
+}
+.container .keyboard__key--right-shift, .container .keyboard__key--enter {
+  width: 95px;
+  height: 50px;
+}
+.container .keyboard__key--right-shift:hover, .container .keyboard__key--enter:hover {
+  background: gainsboro;
+}
+.container .keyboard__key--left-shift, .container .keyboard__key--caps-lock, .container .keyboard__key--backspace {
+  width: 110px;
+  height: 50px;
+}
+.container .keyboard__key--left-shift:hover, .container .keyboard__key--caps-lock:hover, .container .keyboard__key--backspace:hover {
+  background: gainsboro;
+}
+.container .keyboard__key--space {
+  display: block;
+  width: 340px;
+  height: 50px;
+}
+.container .keyboard__key--space:hover {
+  background: gainsboro;
+}
+
+.keyboard__key.active-key {
+  border-radius: 50px;
+  background: aqua;
+}
+
+.key__eng {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.key__rus {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.lower-case {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.upper-case {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.caps {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.key__shifted-caps {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
 }/*# sourceMappingURL=style.css.map */
