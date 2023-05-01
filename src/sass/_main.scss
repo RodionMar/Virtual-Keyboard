@@ -7,16 +7,15 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5%;
-  font-size: 20px;
-  
+  padding-top: 20px;
+  font-size: 14px;
   h1{
     max-width: 50%;
-    font-size: 38px;
+    font-size: 32px;
     color: aqua;
     }
   .keyboard-field{
-    margin: 50px 0;
+    margin: 25px 0;
     font-size: 24px;
   }
   textarea:focus{
@@ -51,7 +50,6 @@ body{
         transition: border-radius 0.2s, background 0.2s;
         cursor: pointer;
         user-select: none;
-        
         &--back-quote,
         &--digit-one,
         &--digit-two,
