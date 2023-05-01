@@ -36,9 +36,9 @@ function init() {
             } else if (element.id === 'ShiftLeft' || element.id === 'ShiftRight' || element.id === 'ControlLeft' || element.id === 'AltLeft' || element.id === 'AltRight' || element.id === 'MetaLeft' || element.id === 'MetaRight' || element.id === 'ControlRight' || element.id === 'CapsLock') {
                 event.preventDefault();
             } else if(element.id === 'Backspace') {
-                textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Backspace' }));
+                Backspace();
             } else if (element.id === 'Delete') {
-                textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Delete' }));
+                Delete();
             } else {
                 textarea.value += element.innerText;
                 
@@ -190,31 +190,33 @@ function init() {
         }
     }
     // --------------- Backspace --------------------------------
-    function Backspace(event) {
-        const startValue = event.target.selectionStart;
-        const endValue = event.target.selectionEnd;
-        const oldValue = event.target.value;
+    const Backspace = () => {
+        const startValue = textarea.selectionStart;
+        const endValue = textarea.selectionEnd;
+        const oldValue = textarea.value;
         const newValue = oldValue.slice(0, startValue === endValue ? startValue - 1 : startValue) + oldValue.slice(endValue);
-        event.target.value = newValue;
-        event.target.selectionStart = startValue === endValue ? startValue - 1 : startValue;
-        event.target.selectionEnd = event.target.selectionStart;
+        console.log(newValue);
+        textarea.value = newValue;
+        textarea.selectionStart = startValue === endValue ? startValue - 1 : startValue;
+        textarea.selectionEnd = textarea.selectionStart;
         event.preventDefault();
-    }
+    };
     // -------------------- Enter ---------------------
     const Enter = () => {
         textarea.value += '\n';
     };
     //  ------------------------ Delete -------------------
-    function Delete(event) {
-        const startValue = event.target.selectionStart;
-        const endValue = event.target.selectionEnd;
-        const oldValue = event.target.value;
+    const Delete = () => {
+        const startValue = textarea.selectionStart;
+        const endValue = textarea.selectionEnd;
+        const oldValue = textarea.value;
         if (!(oldValue.length > endValue)) return false;
         const newValue = oldValue.slice(0, startValue) + oldValue.slice(endValue + 1);
-        event.target.value = newValue;
-        event.target.selectionStart = startValue;
-        event.target.selectionEnd = event.target.selectionStart;
-    }
+        console.log(newValue);
+        textarea.value = newValue;
+        textarea.selectionStart = startValue;
+        textarea.selectionEnd = textarea.selectionStart;
+    };
 }
 
 init();

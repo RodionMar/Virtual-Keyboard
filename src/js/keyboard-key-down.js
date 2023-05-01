@@ -5,7 +5,8 @@ export default function keyboardKeyDown() {
         keys.forEach(element => {
             if (event.code === element.id) {
                 if (element.id === 'Tab') {
-                    textarea.value += '   ';
+                    textarea.value += '    ';
+                    console.log(textarea.value);
                     event.preventDefault();
                 } else if (element.id === 'Enter') {
                     textarea.value += '\n';
