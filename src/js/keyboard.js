@@ -33,14 +33,19 @@ function init() {
                 Enter();
             } else if (element.id === 'Space') {
                 textarea.value += ' ';
-            } else if (element.id === 'ShiftLeft' || element.id === 'ShiftRight' || element.id === 'Delete' || element.id === 'ControlLeft' || element.id === 'AltLeft' || element.id === 'AltRight' || element.id === 'MetaLeft' || element.id === 'MetaRight' || element.id === 'ControlRight' || element.id === 'CapsLock') {
+            } else if (element.id === 'ShiftLeft' || element.id === 'ShiftRight' || element.id === 'ControlLeft' || element.id === 'AltLeft' || element.id === 'AltRight' || element.id === 'MetaLeft' || element.id === 'MetaRight' || element.id === 'ControlRight' || element.id === 'CapsLock') {
                 event.preventDefault();
             } else if(element.id === 'Backspace') {
                 textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Backspace' }));
+            } else if (element.id === 'Delete') {
+                textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Delete' }));
             } else {
                 textarea.value += element.innerText;
+                
             }
             element.classList.add('active-key');
+            console.log(element);
+            console.log(element.childNode);
             event.preventDefault();
         }
         );
@@ -88,6 +93,8 @@ function init() {
         } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') Shift(capsPressed);
         else if (event.code === 'Backspace') {
             Backspace(event);
+        } else if (event.code === 'Delete') {
+            Delete(event);
         }
     });
     textarea.addEventListener('keyup', (event) => {
@@ -184,21 +191,30 @@ function init() {
     }
     // --------------- Backspace --------------------------------
     function Backspace(event) {
-        const start = event.target.selectionStart;
-        const end = event.target.selectionEnd;
+        const startValue = event.target.selectionStart;
+        const endValue = event.target.selectionEnd;
         const oldValue = event.target.value;
-
-        const newValue = oldValue.slice(0, start === end ? start - 1 : start) + oldValue.slice(end);
+        const newValue = oldValue.slice(0, startValue === endValue ? startValue - 1 : startValue) + oldValue.slice(endValue);
         event.target.value = newValue;
-        event.target.selectionStart = start === end ? start - 1 : start;
+        event.target.selectionStart = startValue === endValue ? startValue - 1 : startValue;
         event.target.selectionEnd = event.target.selectionStart;
-
         event.preventDefault();
     }
     // -------------------- Enter ---------------------
     const Enter = () => {
         textarea.value += '\n';
     };
+    //  ------------------------ Delete -------------------
+    function Delete(event) {
+        const startValue = event.target.selectionStart;
+        const endValue = event.target.selectionEnd;
+        const oldValue = event.target.value;
+        if (!(oldValue.length > endValue)) return false;
+        const newValue = oldValue.slice(0, startValue) + oldValue.slice(endValue + 1);
+        event.target.value = newValue;
+        event.target.selectionStart = startValue;
+        event.target.selectionEnd = event.target.selectionStart;
+    }
 }
 
 init();
