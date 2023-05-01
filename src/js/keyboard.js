@@ -7,10 +7,7 @@ let keyBoard = keyboardTemplate();
 
 document.body.innerHTML = '<div class="container"><h1>RSS Virtual Keyboard</h1><textarea class="keyboard-field" name="" id="" cols="60" rows="10"></textarea>'+ keyBoard +'<p>Виртуальная клавиатура создана в операционной системе Windows</p><p>Для переключения языка зажмите комбинацию клавишь: левые Ctrl + Alt</p></div>';
 
-const LOWER_CASES = document.querySelectorAll('.lower-case');
-const UPPER_CASES = document.querySelectorAll('.upper-case');
-const CAPS_LOCK_CASES = document.querySelectorAll('.caps');
-const SHIFTED_CAPS_LOCK_CASES = document.querySelectorAll('.key__shifted-caps');
+const keys = document.querySelectorAll('.keyboard__key');
 
 function init() {
 
@@ -27,75 +24,30 @@ function init() {
     }, 0);
 
     // -----------------------MOUSEDOWN / MOUSEUP-------------------------------
-    LOWER_CASES.forEach(element => {
-        element.addEventListener('mousedown', () => {
+    keys.forEach(element => {
+        element.addEventListener('mousedown', (event) => {
+            if (element.id === 'Tab') {
+                textarea.value += '   ';
+                // event.preventDefault();
+            } else if (element.id === 'Enter') {
+                Enter();
+            } else if (element.id === 'Space') {
+                textarea.value += ' ';
+            } else if (element.id === 'ShiftLeft' || element.id === 'ShiftRight' || element.id === 'Delete' || element.id === 'ControlLeft' || element.id === 'AltLeft' || element.id === 'AltRight' || element.id === 'MetaLeft' || element.id === 'MetaRight' || element.id === 'ControlRight' || element.id === 'CapsLock') {
+                event.preventDefault();
+            } else if(element.id === 'Backspace') {
+                textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Backspace' }));
+            } else {
+                textarea.value += element.innerText;
+            }
             element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
+            event.preventDefault();
+        }
+        );
         element.addEventListener('mouseup', () => {
             element.classList.remove('active-key');
         });
-        element.addEventListener('keydown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('keyup', () => {
-            element.classList.remove('active-key');
-        });
     });
-    UPPER_CASES.forEach(element => {
-        element.addEventListener('mousedown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('mouseup', () => {
-            element.classList.remove('active-key');
-        });
-        element.addEventListener('keydown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('keyup', () => {
-            element.classList.remove('active-key');
-        });
-    });
-    CAPS_LOCK_CASES.forEach(element => {
-        element.addEventListener('mousedown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('mouseup', () => {
-            element.classList.remove('active-key');
-        });
-        element.addEventListener('keydown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('keyup', () => {
-            element.classList.remove('active-key');
-        });
-    });
-    SHIFTED_CAPS_LOCK_CASES.forEach(element => {
-        element.addEventListener('mousedown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('mouseup', () => {
-            element.classList.remove('active-key');
-        });
-        element.addEventListener('keydown', () => {
-            element.classList.add('active-key');
-            textarea.value += element.innerText;
-        });
-        element.addEventListener('keyup', () => {
-            element.classList.remove('active-key');
-        });
-    });
-    document.querySelector('#Tab').addEventListener('mousedown', () => {
-        textarea.value += '\t';
-    });
-
-
     // ------------------------- Change Language block -------------------------------
     let activeLang = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'ru';
     localStorage.setItem('lang', activeLang);
@@ -157,27 +109,7 @@ function init() {
     document.querySelector('#ShiftLeft').addEventListener('mouseup', () => {
         unPressedShift(capsPressed);
     });
-    document.querySelector('#Backspace').addEventListener('click', () => {
-        textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Backspace' }));
-    });
-    document.querySelector('#Space').addEventListener('click', (event) => {
-        Space(event);
-    });
-    document.querySelector('#Enter').addEventListener('click', () => {
-        Enter();
-    });
-    document.querySelector('#ArrowUp').addEventListener('click', () => {
-        textarea.value += '▲';
-    });
-    document.querySelector('#ArrowLeft').addEventListener('click', () => {
-        textarea.value += '◄';
-    });
-    document.querySelector('#ArrowDown').addEventListener('click', () => {
-        textarea.value += '▼';
-    });
-    document.querySelector('#ArrowRight').addEventListener('click', () => {
-        textarea.value += '►';
-    });
+    
 
     // ---------------------- Ctrl Alt -------------------------------------
     function fIrstControlAlt() {
@@ -261,11 +193,6 @@ function init() {
         event.target.selectionStart = start === end ? start - 1 : start;
         event.target.selectionEnd = event.target.selectionStart;
 
-        event.preventDefault();
-    }
-    // ---------------- Space --------------------------
-    function Space(event) {
-        textarea.value += ' ';
         event.preventDefault();
     }
     // -------------------- Enter ---------------------
