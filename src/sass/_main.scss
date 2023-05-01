@@ -19,6 +19,10 @@ body{
     margin: 50px 0;
     font-size: 24px;
   }
+  textarea:focus{
+    border: 1px solid black;
+    outline: none;
+  }
   .keyboard{
       border: 1px solid #000;
       background: gray;
@@ -108,31 +112,43 @@ body{
           width: 50px;
           height: 50px;
           &:hover{
-            background: gainsboro;
+            background: aqua;
           }
         }
         &--tab{
          width: 60px;
          height: 50px;
          &:hover{
-          background: gainsboro;
+          background: aqua;
         }
         }
-        &--right-shift,
+        &--right-shift{
+          width: 110px;
+          height: 50px;
+          &:hover{
+            background: aqua;
+          }
+        }
         &--enter{
          width: 95px;
          height: 50px;
          &:hover{
-          background: gainsboro;
+          background: aqua;
+         }
         }
+        &--left-shift{
+          width: 110px;
+          height: 50px;
+          &:hover{
+            background: aqua;
+          }
         }
-        &--left-shift,
         &--caps-lock,
         &--backspace{
          width: 110px;
          height: 50px;
          &:hover{
-          background: gainsboro;
+          background: aqua;
         }
         }
         &--space{
@@ -140,7 +156,7 @@ body{
          width: 340px;
          height: 50px;
          &:hover{
-          background: gainsboro;
+          background: aqua;
         }
         }
    }

@@ -212,6 +212,10 @@ body {
   margin: 50px 0;
   font-size: 24px;
 }
+.container textarea:focus {
+  border: 1px solid black;
+  outline: none;
+}
 .container .keyboard {
   border: 1px solid #000;
   background: gray;
@@ -246,28 +250,42 @@ body {
   height: 50px;
 }
 .container .keyboard__key--back-quote:hover, .container .keyboard__key--digit-one:hover, .container .keyboard__key--digit-two:hover, .container .keyboard__key--digit-three:hover, .container .keyboard__key--digit-four:hover, .container .keyboard__key--digit-five:hover, .container .keyboard__key--digit-six:hover, .container .keyboard__key--digit-seven:hover, .container .keyboard__key--digit-eight:hover, .container .keyboard__key--digit-nine:hover, .container .keyboard__key--digit-zero:hover, .container .keyboard__key--minus:hover, .container .keyboard__key--equal:hover, .container .keyboard__key--backs-lash:hover, .container .keyboard__key--del:hover, .container .keyboard__key--keyQ:hover, .container .keyboard__key--keyW:hover, .container .keyboard__key--keyE:hover, .container .keyboard__key--keyR:hover, .container .keyboard__key--keyT:hover, .container .keyboard__key--keyY:hover, .container .keyboard__key--keyU:hover, .container .keyboard__key--keyI:hover, .container .keyboard__key--keyO:hover, .container .keyboard__key--keyP:hover, .container .keyboard__key--left-square-bracket:hover, .container .keyboard__key--right-square-bracket:hover, .container .keyboard__key--keyA:hover, .container .keyboard__key--keyS:hover, .container .keyboard__key--keyD:hover, .container .keyboard__key--keyF:hover, .container .keyboard__key--keyG:hover, .container .keyboard__key--keyH:hover, .container .keyboard__key--keyJ:hover, .container .keyboard__key--keyK:hover, .container .keyboard__key--keyL:hover, .container .keyboard__key--semicolon:hover, .container .keyboard__key--quote:hover, .container .keyboard__key--keyZ:hover, .container .keyboard__key--keyX:hover, .container .keyboard__key--keyC:hover, .container .keyboard__key--keyV:hover, .container .keyboard__key--keyB:hover, .container .keyboard__key--keyN:hover, .container .keyboard__key--keyM:hover, .container .keyboard__key--comma:hover, .container .keyboard__key--dot:hover, .container .keyboard__key--slash:hover, .container .keyboard__key--left-ctrl:hover, .container .keyboard__key--right-ctrl:hover, .container .keyboard__key--left-alt:hover, .container .keyboard__key--right-alt:hover, .container .keyboard__key--win:hover, .container .keyboard__key--top-arrow:hover, .container .keyboard__key--right-arrow:hover, .container .keyboard__key--bottom-arrow:hover, .container .keyboard__key--left-arrow:hover {
-  background: gainsboro;
+  background: aqua;
 }
 .container .keyboard__key--tab {
   width: 60px;
   height: 50px;
 }
 .container .keyboard__key--tab:hover {
-  background: gainsboro;
+  background: aqua;
 }
-.container .keyboard__key--right-shift, .container .keyboard__key--enter {
-  width: 95px;
-  height: 50px;
-}
-.container .keyboard__key--right-shift:hover, .container .keyboard__key--enter:hover {
-  background: gainsboro;
-}
-.container .keyboard__key--left-shift, .container .keyboard__key--caps-lock, .container .keyboard__key--backspace {
+.container .keyboard__key--right-shift {
   width: 110px;
   height: 50px;
 }
-.container .keyboard__key--left-shift:hover, .container .keyboard__key--caps-lock:hover, .container .keyboard__key--backspace:hover {
-  background: gainsboro;
+.container .keyboard__key--right-shift:hover {
+  background: aqua;
+}
+.container .keyboard__key--enter {
+  width: 95px;
+  height: 50px;
+}
+.container .keyboard__key--enter:hover {
+  background: aqua;
+}
+.container .keyboard__key--left-shift {
+  width: 110px;
+  height: 50px;
+}
+.container .keyboard__key--left-shift:hover {
+  background: aqua;
+}
+.container .keyboard__key--caps-lock, .container .keyboard__key--backspace {
+  width: 110px;
+  height: 50px;
+}
+.container .keyboard__key--caps-lock:hover, .container .keyboard__key--backspace:hover {
+  background: aqua;
 }
 .container .keyboard__key--space {
   display: block;
@@ -275,7 +293,7 @@ body {
   height: 50px;
 }
 .container .keyboard__key--space:hover {
-  background: gainsboro;
+  background: aqua;
 }
 
 .keyboard__key.active-key {
