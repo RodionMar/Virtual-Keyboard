@@ -22,85 +22,72 @@ function init() {
     // ------------------------------
 
     const textarea = document.querySelector('textarea');
+    setInterval(() => {
+        textarea.focus();
+    }, 0);
 
     // -----------------------MOUSEDOWN / MOUSEUP-------------------------------
     LOWER_CASES.forEach(element => {
-        element.addEventListener('mousedown', (event) => {
-            console.log(event);
+        element.addEventListener('mousedown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('mouseup', (event) => {
-            console.log(event);
+        element.addEventListener('mouseup', () => {
             element.classList.remove('active-key');
         });
-        element.addEventListener('keydown', (event) => {
-            console.log(event);
+        element.addEventListener('keydown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('keyup', (event) => {
-            console.log(event);
+        element.addEventListener('keyup', () => {
             element.classList.remove('active-key');
         });
     });
     UPPER_CASES.forEach(element => {
-        element.addEventListener('mousedown', (event) => {
-            console.log(event);
+        element.addEventListener('mousedown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('mouseup', (event) => {
-            console.log(event);
+        element.addEventListener('mouseup', () => {
             element.classList.remove('active-key');
         });
-        element.addEventListener('keydown', (event) => {
-            console.log(event);
+        element.addEventListener('keydown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('keyup', (event) => {
-            console.log(event);
+        element.addEventListener('keyup', () => {
             element.classList.remove('active-key');
         });
     });
     CAPS_LOCK_CASES.forEach(element => {
-        element.addEventListener('mousedown', (event) => {
-            console.log(event);
+        element.addEventListener('mousedown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('mouseup', (event) => {
-            console.log(event);
+        element.addEventListener('mouseup', () => {
             element.classList.remove('active-key');
         });
-        element.addEventListener('keydown', (event) => {
-            console.log(event);
+        element.addEventListener('keydown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('keyup', (event) => {
-            console.log(event);
+        element.addEventListener('keyup', () => {
             element.classList.remove('active-key');
         });
     });
     SHIFTED_CAPS_LOCK_CASES.forEach(element => {
-        element.addEventListener('mousedown', (event) => {
-            console.log(event);
+        element.addEventListener('mousedown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('mouseup', (event) => {
-            console.log(event);
+        element.addEventListener('mouseup', () => {
             element.classList.remove('active-key');
         });
-        element.addEventListener('keydown', (event) => {
-            console.log(event);
+        element.addEventListener('keydown', () => {
             element.classList.add('active-key');
             textarea.value += element.innerText;
         });
-        element.addEventListener('keyup', (event) => {
-            console.log(event);
+        element.addEventListener('keyup', () => {
             element.classList.remove('active-key');
         });
     });
@@ -116,24 +103,24 @@ function init() {
     function changeCurrentKeyboard(language) {
         function changeLang() {
             if (language === 'ru') {
-                function removeHiddenForRus(){
+                const removeHiddenForRus = () => {
                     document.querySelectorAll('.key__rus').forEach(element => {
                         element.classList.remove('hidden');
                     });
                     document.querySelectorAll('.key__eng').forEach(element => {
                         element.classList.add('hidden');
                     });
-                }
+                };
                 return removeHiddenForRus();
             } else if (language === 'en') {
-                function removeHiddenForEng(){
+                const removeHiddenForEng = () => {
                     document.querySelectorAll('.key__eng').forEach(element => {
                         element.classList.remove('hidden');
                     });
                     document.querySelectorAll('.key__rus').forEach(element => {
                         element.classList.add('hidden');
                     });
-                }
+                };
                 return removeHiddenForEng();
             }
         }
@@ -141,24 +128,21 @@ function init() {
     }
 
     let capsPressed = false;
-    window.addEventListener('keydown', (event) => {
+    textarea.addEventListener('keydown', (event) => {
         if (event.code === 'ControlLeft' || event.code === 'AltLeft') ControlAlt(event);
         if (event.code === 'CapsLock') {
             capsPressed = !capsPressed;
-            console.log(capsPressed);
             CapsLock(capsPressed);
         } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') Shift(capsPressed);
         else if (event.code === 'Backspace') {
             Backspace(event);
         }
-        // else if (event.code === "Delete") Delete(event);
     });
-    window.addEventListener('keyup', (event) => {
+    textarea.addEventListener('keyup', (event) => {
         if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') unPressedShift(capsPressed);
     });
     document.querySelector('#CapsLock').addEventListener('mousedown', () => {
         capsPressed = !capsPressed;
-        console.log(capsPressed);
         CapsLock(capsPressed);
     });
     document.querySelector('#ShiftRight').addEventListener('mousedown', () => {
@@ -173,13 +157,27 @@ function init() {
     document.querySelector('#ShiftLeft').addEventListener('mouseup', () => {
         unPressedShift(capsPressed);
     });
-    document.querySelector('#Backspace').addEventListener('click', (event) => {
-        Backspace(event);
+    document.querySelector('#Backspace').addEventListener('click', () => {
+        textarea.dispatchEvent(new KeyboardEvent('keydown', { code: 'Backspace' }));
     });
     document.querySelector('#Space').addEventListener('click', (event) => {
         Space(event);
     });
-
+    document.querySelector('#Enter').addEventListener('click', () => {
+        Enter();
+    });
+    document.querySelector('#ArrowUp').addEventListener('click', () => {
+        textarea.value += '▲';
+    });
+    document.querySelector('#ArrowLeft').addEventListener('click', () => {
+        textarea.value += '◄';
+    });
+    document.querySelector('#ArrowDown').addEventListener('click', () => {
+        textarea.value += '▼';
+    });
+    document.querySelector('#ArrowRight').addEventListener('click', () => {
+        textarea.value += '►';
+    });
 
     // ---------------------- Ctrl Alt -------------------------------------
     function fIrstControlAlt() {
@@ -194,7 +192,6 @@ function init() {
             localStorage.setItem('lang', activeLang);
             changeCurrentKeyboard(activeLang);
         }
-    
         event.preventDefault();
     }
 
@@ -255,13 +252,26 @@ function init() {
     }
     // --------------- Backspace --------------------------------
     function Backspace(event) {
-        textarea.value = textarea.value.substring(0, textarea.value.length - 1);
+        const start = event.target.selectionStart;
+        const end = event.target.selectionEnd;
+        const oldValue = event.target.value;
+
+        const newValue = oldValue.slice(0, start === end ? start - 1 : start) + oldValue.slice(end);
+        event.target.value = newValue;
+        event.target.selectionStart = start === end ? start - 1 : start;
+        event.target.selectionEnd = event.target.selectionStart;
+
         event.preventDefault();
     }
     // ---------------- Space --------------------------
-    function Space() {
+    function Space(event) {
         textarea.value += ' ';
+        event.preventDefault();
     }
+    // -------------------- Enter ---------------------
+    const Enter = () => {
+        textarea.value += '\n';
+    };
 }
 
 init();

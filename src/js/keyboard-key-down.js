@@ -17,6 +17,7 @@ export default function keyboardKeyDown() {
                     textarea.value += element.innerText;
                 }
                 element.classList.add('active-key');
+                event.preventDefault();
             }
         });
     });
