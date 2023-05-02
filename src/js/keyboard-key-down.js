@@ -4,6 +4,7 @@ export default function keyboardKeyDown() {
     const textarea = document.querySelector('textarea');
     keys.forEach((element) => {
       if (event.code === element.id) {
+        element.classList.add('active-key');
         if (element.id === 'Tab') {
           textarea.value += '    ';
           event.preventDefault();
@@ -18,7 +19,6 @@ export default function keyboardKeyDown() {
         } else {
           textarea.value += element.innerText;
         }
-        element.classList.add('active-key');
         event.preventDefault();
       }
     });
