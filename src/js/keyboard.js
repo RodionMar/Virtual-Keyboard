@@ -1,7 +1,7 @@
-import keyboardTemplate from './keyboard-template';
-
-import keyboardKeyDown from './keyboard-key-down';
-import keyboardKeyUp from './keyboard-key-up';
+// eslint-disable-next-line no-unused-vars
+import keyboardTemplate from './keyboard-template.js';
+import keyboardKeyDown from './keyboard-key-down.js';
+import keyboardKeyUp from './keyboard-key-up.js';
 
 const keyBoard = keyboardTemplate();
 
